@@ -20,22 +20,23 @@ namespace DALTest
             DATAAREA DA = new DATAAREA();
             DA.ID = "COP";
             DA.NAME = "Cardinal Office Products";
-            //DA.RECID = 1;
 
             data.DATAAREA.Add(DA);
             data.SaveChanges();
+            
         }
         [TestMethod]
         public void TestRepositoryWriteToDataAreaTable()
         {
             var DARepo = new DataRepository<DATAAREA>();
             DATAAREA DA = new DATAAREA();
-            DA.ID = "aR";
-            DA.NAME = "Sucks";
+            DA.ID = "MBS";
+            DA.NAME = "MBS Dev, Inc.";
             DARepo.Create(DA);
+            
         }
         [TestMethod]
-        public void TestRepositoryWriteToMbsWbWebUserTable()
+        public void TestRepositoryWriteSeedUsersToMbsWbWebUserTable()
         {
             var MWCRepo = new DataRepository<MBSWBWEBUSERCONTACT>();
             MBSWBWEBUSERCONTACT MWC = new MBSWBWEBUSERCONTACT();
