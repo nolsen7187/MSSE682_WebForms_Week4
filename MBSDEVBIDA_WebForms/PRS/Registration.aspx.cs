@@ -15,14 +15,17 @@ public partial class Registration : System.Web.UI.Page
     {
         /*if (IsPostBack)
         {
-
-            SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["AXMbsDevEntities"].ConnectionString);
-            con.Open();
+            /*SqlConnection dbConnection = new SqlConnection(ConfigurationManager.ConnectionStrings["AXMbsDevEntities"].ConnectionString);          
+            dbConnection.Open();
             string cmdStr = "Select count(*) from MBSWBWEBUSERCONTACT where WEBLOGON='" + TextBoxUserName.Text + "'";
-            SqlCommand userExist = new SqlCommand(cmdStr, con);
+            SqlCommand userExist = new SqlCommand(cmdStr, dbConnection);
             int temp = Convert.ToInt32(userExist.ExecuteScalar().ToString());
-            con.Close();
-            if (temp == 1)
+            dbConnection.Close();
+            string userExist;
+            BUS_Facade newFacade = new BUS_Facade(TextBoxUserName.Text);
+            userExist = newFacade.ProcessLogonNameAuthenticity();
+
+            if (userExist == TextBoxUserName.Text)
             {
                 Response.Write("User Name Already Exist.<br/> Please Select another username.");
             }
@@ -45,13 +48,11 @@ public partial class Registration : System.Web.UI.Page
         object Class = uIWebUser;
         int ActionType = 1;
 
-        //Facade newFacade = new Facade(uICustomer, ActionType);
         BUS_Facade newFacade = new BUS_Facade(Class, ActionType);
         newFacade.ProcessRequest();
 
         try
         {
-            //newFacade.ProcessRequest();
             Response.Redirect("Login.aspx");
 
         }
@@ -69,8 +70,8 @@ public partial class Registration : System.Web.UI.Page
         {
             SuccessLabel.Text = "Failed to registers on FFR's website, please verify you have entered all necessary information.";
         }
-
         /*
+        
 
         SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["AXMbsDevEntities"].ConnectionString);
         con.Open();

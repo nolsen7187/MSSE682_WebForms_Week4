@@ -15,4 +15,8 @@ public partial class Admin : System.Web.UI.Page
     {
 
     }
+    protected void SqlDataSource1_Selecting(object sender, SqlDataSourceSelectingEventArgs e)
+    {
+
+    }
 }

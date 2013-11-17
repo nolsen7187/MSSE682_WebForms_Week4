@@ -1,14 +1,14 @@
 ﻿<%@ Page Title="User Administration" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeFile="Admin.aspx.cs" Inherits="Admin" %>
 
 <asp:Content runat="server" ContentPlaceHolderID="MainContent">
-<hgroup class="title">
+    <hgroup class="title">
     <h1><%: Title %></h1>
 </hgroup>
 <article>
     <form id="form1" >
     <div>
     
-        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AXMbsDevEntities %>" SelectCommand="SELECT * FROM [MBSWBWEBUSERCONTACT]"></asp:SqlDataSource>
+        <asp:SqlDataSource ID="SqlDataSource1" runat="server" ConnectionString="<%$ ConnectionStrings:AXMbsDevConnectionString %>" SelectCommand="SELECT * FROM [MBSWBWEBUSERCONTACT]" OnSelecting="SqlDataSource1_Selecting"></asp:SqlDataSource>
     
         <asp:GridView ID="GridView1" runat="server" AllowPaging="True" AllowSorting="True" AutoGenerateColumns="False" DataKeyNames="WEBLOGON,CONTACTPERSONID,DATAAREAID" DataSourceID="SqlDataSource1" OnSelectedIndexChanged="GridView1_SelectedIndexChanged">
             <Columns>
